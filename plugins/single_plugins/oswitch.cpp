@@ -47,7 +47,6 @@ class wayfire_oswitch : public wf::plugin_interface_t
     {
         auto current_output = wf::get_core().seat->get_active_output();
         auto view = wf::toplevel_cast(wf::get_active_view_for_output(current_output));
-        LOGI("Found view ", view);
         if (view)
         {
             move_view_to_output(view, target_output, true);
