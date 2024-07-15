@@ -7,7 +7,7 @@
 #include <wayfire/core.hpp>
 #include <wayfire/output-layout.hpp>
 #include <wayfire/core.hpp>
-#include <nlohmann/json.hpp>
+#include "plugins/ipc/nlohmann.hpp" // IWYU pragma: keep
 
 namespace wf
 {
