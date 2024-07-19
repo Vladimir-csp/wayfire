@@ -4,12 +4,14 @@ all_deps = [wlroots, pixman, wfconfig, wftouch, cairo, pango, pangocairo, json, 
 shared_module('scale', ['scale.cpp', 'scale-title-overlay.cpp'],
         include_directories: all_include_dirs,
         dependencies: all_deps,
+        cpp_args: plugin_pch_args,
         install: true,
         install_dir: conf_data.get('PLUGIN_PATH'))
 
 shared_module('scale-title-filter', 'scale-title-filter.cpp',
         include_directories: all_include_dirs,
         dependencies: all_deps,
+        cpp_args: plugin_pch_args,
         install: true,
         install_dir: conf_data.get('PLUGIN_PATH'))
 

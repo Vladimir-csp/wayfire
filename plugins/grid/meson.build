@@ -5,6 +5,7 @@ all_deps = [wlroots, pixman, wfconfig, wftouch, cairo, json, plugin_pch_dep]
 shared_module('grid', ['grid.cpp'],
         include_directories: all_include_dirs,
         dependencies: all_deps,
+        cpp_args: plugin_pch_args,
         install: true,
         install_dir: conf_data.get('PLUGIN_PATH'))
 

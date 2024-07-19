@@ -4,6 +4,7 @@ wobbly = shared_module('wobbly',
                        ['wobbly.cpp'],
                        include_directories: [wayfire_api_inc, wayfire_conf_inc, plugins_common_inc],
                        dependencies: [wlroots, pixman, wfconfig, plugin_pch_dep],
+                       cpp_args: plugin_pch_args,
                        link_with: wobbly_c_model,
                        install: true,
                        install_dir: join_paths(get_option('libdir'), 'wayfire'))
