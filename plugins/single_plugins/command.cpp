@@ -320,10 +320,10 @@ class wayfire_command : public wf::plugin_interface_t
         [&] (const Json::Value& js, wf::ipc::client_interface_t *client)
     {
         auto binding_str = wf::ipc::json_get_string(js, "binding");
-        auto mode_str = wf::ipc::json_get_optional_string(js, "mode");
+        auto mode_str    = wf::ipc::json_get_optional_string(js, "mode");
         auto exec_always = wf::ipc::json_get_optional_bool(js, "exec-always").value_or(false);
         auto call_method = wf::ipc::json_get_optional_string(js, "call-method");
-        auto command = wf::ipc::json_get_optional_string(js, "command");
+        auto command     = wf::ipc::json_get_optional_string(js, "command");
 
         if (call_method.has_value() && !js.isMember("call-data"))
         {

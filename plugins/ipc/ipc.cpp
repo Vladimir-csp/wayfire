@@ -252,7 +252,7 @@ void wf::ipc::client_t::handle_fd_incoming(uint32_t event_mask)
 
         // Finally, received the message, make sure we have a terminating NULL byte
         buffer[current_buffer_valid] = '\0';
-        char *str    = buffer.data() + HEADER_LEN;
+        char *str = buffer.data() + HEADER_LEN;
 
         Json::Reader reader;
         Json::Value message;

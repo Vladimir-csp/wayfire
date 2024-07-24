@@ -323,13 +323,12 @@ class stipc_plugin_t : public wf::plugin_interface_t
 
         for (auto v : data["views"])
         {
-            auto id = wf::ipc::json_get_uint64(v, "id");
-            int x = wf::ipc::json_get_int64(v, "x");
-            int y = wf::ipc::json_get_int64(v, "y");
+            auto id   = wf::ipc::json_get_uint64(v, "id");
+            int x     = wf::ipc::json_get_int64(v, "x");
+            int y     = wf::ipc::json_get_int64(v, "y");
             int width = wf::ipc::json_get_int64(v, "width");
-            int height = wf::ipc::json_get_int64(v, "height");
+            int height  = wf::ipc::json_get_int64(v, "height");
             auto output = wf::ipc::json_get_optional_string(v, "output");
-
 
             auto it = std::find_if(views.begin(), views.end(), [&] (auto& view)
             {
@@ -387,7 +386,7 @@ class stipc_plugin_t : public wf::plugin_interface_t
     ipc::method_callback destroy_wayland_output = [] (Json::Value data) -> Json::Value
     {
         auto output_str = wf::ipc::json_get_string(data, "output");
-        auto output = wf::get_core().output_layout->find_output(output_str);
+        auto output     = wf::get_core().output_layout->find_output(output_str);
         if (!output)
         {
             return wf::ipc::json_error("Could not find output: \"" + output_str + "\"");
@@ -435,9 +434,9 @@ class stipc_plugin_t : public wf::plugin_interface_t
 
     ipc::method_callback feed_key = [=] (Json::Value data)
     {
-        auto key = wf::ipc::json_get_string(data, "key");
-        auto state = wf::ipc::json_get_bool(data, "state");
-        int keycode     = libevdev_event_code_from_name(EV_KEY, key.c_str());
+        auto key    = wf::ipc::json_get_string(data, "key");
+        auto state  = wf::ipc::json_get_bool(data, "state");
+        int keycode = libevdev_event_code_from_name(EV_KEY, key.c_str());
         if (keycode == -1)
         {
             return wf::ipc::json_error("Failed to parse evdev key \"" + key + "\"");
@@ -497,8 +496,8 @@ class stipc_plugin_t : public wf::plugin_interface_t
     ipc::method_callback do_touch = [=] (Json::Value data)
     {
         auto finger = wf::ipc::json_get_int64(data, "finger");
-        auto x      = wf::ipc::json_get_f64(data, "x");
-        auto y      = wf::ipc::json_get_f64(data, "y");
+        auto x = wf::ipc::json_get_f64(data, "x");
+        auto y = wf::ipc::json_get_f64(data, "y");
         input->do_touch(finger, x, y);
         return wf::ipc::json_ok();
     };
@@ -534,8 +533,8 @@ class stipc_plugin_t : public wf::plugin_interface_t
     ipc::method_callback do_tool_proximity = [=] (Json::Value data)
     {
         auto proximity_in = wf::ipc::json_get_bool(data, "proximity_in");
-        auto x            = wf::ipc::json_get_f64(data, "x");
-        auto y            = wf::ipc::json_get_f64(data, "y");
+        auto x = wf::ipc::json_get_f64(data, "x");
+        auto y = wf::ipc::json_get_f64(data, "y");
         input->do_tablet_proximity(proximity_in, x, y);
         return wf::ipc::json_ok();
     };
@@ -559,8 +558,8 @@ class stipc_plugin_t : public wf::plugin_interface_t
 
     ipc::method_callback do_tool_tip = [=] (Json::Value data)
     {
-        auto x = wf::ipc::json_get_f64(data, "x");
-        auto y = wf::ipc::json_get_f64(data, "y");
+        auto x     = wf::ipc::json_get_f64(data, "x");
+        auto y     = wf::ipc::json_get_f64(data, "y");
         auto state = wf::ipc::json_get_bool(data, "state");
         input->do_tablet_tip(state, x, y);
         return wf::ipc::json_ok();

@@ -69,7 +69,7 @@ class wayfire_wsets_plugin_t : public wf::plugin_interface_t
 
     wf::ipc::method_callback set_output_wset = [=] (Json::Value data)
     {
-        auto output_id = wf::ipc::json_get_int64(data, "output-id");
+        auto output_id  = wf::ipc::json_get_int64(data, "output-id");
         auto wset_index = wf::ipc::json_get_int64(data, "wset-index");
         wf::output_t *o = wf::ipc::find_output_by_id(output_id);
         if (!o)
@@ -83,7 +83,7 @@ class wayfire_wsets_plugin_t : public wf::plugin_interface_t
 
     wf::ipc::method_callback send_view_to_wset = [=] (Json::Value data)
     {
-        auto view_id = wf::ipc::json_get_int64(data, "view-id");
+        auto view_id    = wf::ipc::json_get_int64(data, "view-id");
         auto wset_index = wf::ipc::json_get_int64(data, "wset-index");
 
         wayfire_toplevel_view view = toplevel_cast(wf::ipc::find_view_by_id(view_id));

@@ -59,7 +59,7 @@ class ipc_rules_utility_methods_t
 
     wf::ipc::method_callback create_headless_output = [=] (const Json::Value& data)
     {
-        auto width = wf::ipc::json_get_uint64(data, "width");
+        auto width  = wf::ipc::json_get_uint64(data, "width");
         auto height = wf::ipc::json_get_uint64(data, "height");
 
         if (!headless_backend)
@@ -81,7 +81,7 @@ class ipc_rules_utility_methods_t
 
     wf::ipc::method_callback destroy_headless_output = [=] (const Json::Value& data)
     {
-        auto output = wf::ipc::json_get_optional_string(data, "output");
+        auto output    = wf::ipc::json_get_optional_string(data, "output");
         auto output_id = wf::ipc::json_get_optional_uint64(data, "output-id");
 
         if (!output.has_value() && !output_id.has_value())

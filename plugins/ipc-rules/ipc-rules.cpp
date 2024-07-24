@@ -183,7 +183,7 @@ class ipc_rules_t : public wf::plugin_interface_t,
         }
 
         auto sticky = wf::ipc::json_get_optional_bool(data, "sticky");
-        auto view = wf::ipc::find_view_by_id(id);
+        auto view   = wf::ipc::find_view_by_id(id);
         if (!view)
         {
             return wf::ipc::json_error("view not found");

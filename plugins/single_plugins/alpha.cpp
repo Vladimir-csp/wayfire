@@ -58,7 +58,7 @@ class wayfire_alpha : public wf::plugin_interface_t
     wf::ipc::method_callback ipc_set_view_alpha = [=] (Json::Value data) -> Json::Value
     {
         auto view_id = wf::ipc::json_get_uint64(data, "view-id");
-        auto alpha = wf::ipc::json_get_f64(data, "alpha");
+        auto alpha   = wf::ipc::json_get_f64(data, "alpha");
 
         auto view = wf::ipc::find_view_by_id(view_id);
         if (view && view->is_mapped())
@@ -76,7 +76,7 @@ class wayfire_alpha : public wf::plugin_interface_t
     wf::ipc::method_callback ipc_get_view_alpha = [=] (Json::Value data) -> Json::Value
     {
         auto view_id = wf::ipc::json_get_uint64(data, "view-id");
-        auto view = wf::ipc::find_view_by_id(view_id);
+        auto view    = wf::ipc::find_view_by_id(view_id);
         if (!view)
         {
             return wf::ipc::json_error("Failed to find view with given id. Maybe it was closed?");

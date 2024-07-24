@@ -13,35 +13,34 @@ namespace wf
 {
 namespace ipc
 {
-
 #define WFJSON_GETTER_FUNCTION(type, suffix, rtype) \
-inline rtype json_get_ ## suffix (const Json::Value& data, std::string field) \
-{ \
-    if (!data.isMember(field)) \
+    inline rtype json_get_ ## suffix(const Json::Value& data, std::string field) \
     { \
-        throw ("Missing \"" + field + "\""); \
-    } \
-    else if (!data[field].is ##type ()) \
-    { \
-        throw ("Field \"" + field + "\" does not have the correct type, expected " #type); \
-    } \
+        if (!data.isMember(field)) \
+        { \
+            throw ("Missing \"" + field + "\""); \
+        } \
+        else if (!data[field].is ## type()) \
+        { \
+            throw ("Field \"" + field + "\" does not have the correct type, expected " #type); \
+        } \
 \
-    return data[field].as ##type (); \
-} \
+        return data[field].as ## type(); \
+    } \
  \
-inline std::optional<rtype> json_get_optional_ ## suffix (const Json::Value& data, std::string field) \
-{ \
-    if (!data.isMember(field)) \
+    inline std::optional<rtype> json_get_optional_ ## suffix(const Json::Value& data, std::string field) \
     { \
-        return {}; \
-    } \
-    else if (!data[field].is ## type ()) \
-    { \
-        throw ("Field \"" + field + "\" does not have the correct type, expected " #type); \
-    } \
+        if (!data.isMember(field)) \
+        { \
+            return {}; \
+        } \
+        else if (!data[field].is ## type()) \
+        { \
+            throw ("Field \"" + field + "\" does not have the correct type, expected " #type); \
+        } \
 \
-    return data[field].as ##type (); \
-}
+        return data[field].as ## type(); \
+    }
 
 WFJSON_GETTER_FUNCTION(Int64, int64, int64_t);
 WFJSON_GETTER_FUNCTION(UInt64, uint64, uint64_t);

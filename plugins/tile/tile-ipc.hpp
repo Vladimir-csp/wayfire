@@ -224,8 +224,8 @@ inline Json::Value handle_ipc_get_layout(const Json::Value& params)
         return wf::ipc::json_error("Missing 'workspace' field");
     }
 
-    auto x = wf::ipc::json_get_int64(params["workspace"], "x");
-    auto y = wf::ipc::json_get_int64(params["workspace"], "y");
+    auto x  = wf::ipc::json_get_int64(params["workspace"], "x");
+    auto y  = wf::ipc::json_get_int64(params["workspace"], "y");
     auto ws = ipc::find_workspace_set_by_index(wset_index);
     if (ws)
     {
@@ -330,7 +330,8 @@ inline Json::Value handle_ipc_set_layout(Json::Value params)
         }
 
         // Step 3: set up the new layout
-        tile_ws.roots[x][y] = build_tree_from_json(params["layout"], &tile_ws, {static_cast<int>(x), static_cast<int>(y)});
+        tile_ws.roots[x][y] = build_tree_from_json(params["layout"], &tile_ws, {static_cast<int>(x),
+            static_cast<int>(y)});
         tile::flatten_tree(tile_ws.roots[x][y]);
         tile_ws.roots[x][y]->set_gaps(tile_ws.get_gaps());
         tile_ws.roots[x][y]->set_geometry(workarea, tx.tx);

@@ -42,56 +42,56 @@ class wayfire_demo_ipc : public wf::plugin_interface_t
 
     wf::ipc::method_callback get_view_info = [=] (Json::Value data)
     {
-//        WFJSON_EXPECT_FIELD(data, "id", number_integer);
+// WFJSON_EXPECT_FIELD(data, "id", number_integer);
 //
-//        for (auto view : wf::get_core().get_all_views())
-//        {
-//            if (view->get_id() == data["id"])
-//            {
-//                auto response = wf::ipc::json_ok();
-//                response["info"] = view_to_json(view);
-//                return response;
-//            }
-//        }
+// for (auto view : wf::get_core().get_all_views())
+// {
+// if (view->get_id() == data["id"])
+// {
+// auto response = wf::ipc::json_ok();
+// response["info"] = view_to_json(view);
+// return response;
+// }
+// }
 
         return wf::ipc::json_error("no such view");
     };
 
     wf::ipc::method_callback get_output_info = [=] (Json::Value data)
     {
-//        WFJSON_EXPECT_FIELD(data, "id", number_integer);
-//        auto wo = wf::ipc::find_output_by_id(data["id"]);
-//        if (!wo)
-//        {
-//            return wf::ipc::json_error("output not found");
-//        }
+// WFJSON_EXPECT_FIELD(data, "id", number_integer);
+// auto wo = wf::ipc::find_output_by_id(data["id"]);
+// if (!wo)
+// {
+// return wf::ipc::json_error("output not found");
+// }
 //
-//        auto response = wf::ipc::json_ok();
-//        response["info"]["name"]     = wo->to_string();
-//        response["info"]["geometry"] = wf::ipc::geometry_to_json(wo->get_layout_geometry());
+// auto response = wf::ipc::json_ok();
+// response["info"]["name"]     = wo->to_string();
+// response["info"]["geometry"] = wf::ipc::geometry_to_json(wo->get_layout_geometry());
         return wf::ipc::json_ok();
     };
 
     wf::ipc::method_callback set_view_geometry = [=] (Json::Value data)
     {
-        //WFJSON_EXPECT_FIELD(data, "id", number_integer);
-        //WFJSON_EXPECT_FIELD(data, "geometry", object);
+        // WFJSON_EXPECT_FIELD(data, "id", number_integer);
+        // WFJSON_EXPECT_FIELD(data, "geometry", object);
 
-        //if (auto view = wf::ipc::find_view_by_id(data["id"]))
-        //{
-        //    if (auto geometry = wf::ipc::geometry_from_json(data["geometry"]))
-        //    {
-        //        if (auto toplevel = toplevel_cast(view))
-        //        {
-        //            toplevel->set_geometry(geometry.value());
-        //            return wf::ipc::json_ok();
-        //        }
+        // if (auto view = wf::ipc::find_view_by_id(data["id"]))
+        // {
+        // if (auto geometry = wf::ipc::geometry_from_json(data["geometry"]))
+        // {
+        // if (auto toplevel = toplevel_cast(view))
+        // {
+        // toplevel->set_geometry(geometry.value());
+        // return wf::ipc::json_ok();
+        // }
 
-        //        return wf::ipc::json_error("view is not toplevel");
-        //    }
+        // return wf::ipc::json_error("view is not toplevel");
+        // }
 
-        //    return wf::ipc::json_error("geometry incorrect");
-        //}
+        // return wf::ipc::json_error("geometry incorrect");
+        // }
 
         return wf::ipc::json_error("view not found");
     };
