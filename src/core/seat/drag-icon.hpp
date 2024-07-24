@@ -3,6 +3,7 @@
 #include <wayfire/nonstd/wlroots-full.hpp>
 #include "wayfire/geometry.hpp"
 #include "wayfire/scene.hpp"
+#include "wayfire/util.hpp"
 
 namespace wf
 {
