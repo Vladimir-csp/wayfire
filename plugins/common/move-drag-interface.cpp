@@ -26,7 +26,6 @@ namespace wf
 {
 namespace move_drag
 {
-
 static wf::geometry_t find_geometry_around(wf::dimensions_t size, wf::point_t grab, wf::pointf_t relative)
 {
     return wf::geometry_t{
@@ -315,7 +314,6 @@ void core_drag_t::rebuild_wobbly(wayfire_toplevel_view view, wf::point_t grab, w
     modify_wobbly(view, find_geometry_around(dim, grab, relative));
 }
 
-
 bool core_drag_t::should_start_pending_drag(wf::point_t current_position)
 {
     if (!tentative_grab_position.has_value())
@@ -326,7 +324,8 @@ bool core_drag_t::should_start_pending_drag(wf::point_t current_position)
     return distance_to_grab_origin(current_position) > 5;
 }
 
-void core_drag_t::start_drag(wayfire_toplevel_view grab_view, wf::pointf_t relative, const drag_options_t& options)
+void core_drag_t::start_drag(wayfire_toplevel_view grab_view, wf::pointf_t relative,
+    const drag_options_t& options)
 {
     wf::dassert(tentative_grab_position.has_value(),
         "First, the drag operation should be set as pending!");
@@ -540,7 +539,6 @@ bool core_drag_t::is_view_held_in_place()
 {
     return priv->view_held_in_place;
 }
-
 
 void core_drag_t::update_current_output(wf::point_t grab)
 {
