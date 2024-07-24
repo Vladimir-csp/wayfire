@@ -37,7 +37,7 @@ class workspace_wall_t : public wf::signal::provider_t
     /**
      * Create a new workspace wall on the given output.
      */
-    workspace_wall_t(wf::output_t* _output);
+    workspace_wall_t(wf::output_t *_output);
 
     ~workspace_wall_t();
 

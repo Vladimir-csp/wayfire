@@ -328,7 +328,7 @@ class workspace_wall_t::workspace_wall_node_t : public scene::node_t
     per_workspace_map_t<float> aux_buffer_current_scale;
 };
 
-workspace_wall_t::workspace_wall_t(wf::output_t* _output) : output(_output)
+workspace_wall_t::workspace_wall_t(wf::output_t *_output) : output(_output)
 {
     this->viewport = get_wall_rectangle();
 }
@@ -351,7 +351,8 @@ void workspace_wall_t::set_gap_size(int size)
 void workspace_wall_t::set_viewport(const wf::geometry_t& viewport_geometry)
 {
     this->viewport = viewport_geometry;
-    if (render_node) {
+    if (render_node)
+    {
         scene::damage_node(
             this->render_node, this->render_node->get_bounding_box());
     }
@@ -378,14 +379,16 @@ void workspace_wall_t::start_output_renderer()
 
 void workspace_wall_t::stop_output_renderer(bool reset_viewport)
 {
-    if (!render_node) {
+    if (!render_node)
+    {
         return;
     }
 
     scene::remove_child(render_node);
     render_node = nullptr;
 
-    if (reset_viewport) {
+    if (reset_viewport)
+    {
         set_viewport({0, 0, 0, 0});
     }
 }
@@ -412,7 +415,8 @@ wf::geometry_t workspace_wall_t::get_wall_rectangle() const
 void workspace_wall_t::set_ws_dim(const wf::point_t& ws, float value)
 {
     render_colors[{ws.x, ws.y}] = value;
-    if (render_node) {
+    if (render_node)
+    {
         scene::damage_node(render_node, render_node->get_bounding_box());
     }
 }
@@ -420,7 +424,8 @@ void workspace_wall_t::set_ws_dim(const wf::point_t& ws, float value)
 float workspace_wall_t::get_color_for_workspace(wf::point_t ws)
 {
     auto it = render_colors.find({ws.x, ws.y});
-    if (it == render_colors.end()) {
+    if (it == render_colors.end())
+    {
         return 1.0;
     }
 
@@ -432,9 +437,12 @@ std::vector<wf::point_t> workspace_wall_t::get_visible_workspaces(
 {
     std::vector<wf::point_t> visible;
     auto wsize = output->wset()->get_workspace_grid_size();
-    for (int i = 0; i < wsize.width; i++) {
-        for (int j = 0; j < wsize.height; j++) {
-            if (viewport & get_workspace_rectangle({i, j})) {
+    for (int i = 0; i < wsize.width; i++)
+    {
+        for (int j = 0; j < wsize.height; j++)
+        {
+            if (viewport & get_workspace_rectangle({i, j}))
+            {
                 visible.push_back({i, j});
             }
         }
