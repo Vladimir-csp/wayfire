@@ -1,15 +1,10 @@
 #pragma once
 
-#include "wayfire/workspace-set.hpp" // IWYU pragma: keep
-#include <glm/gtc/matrix_transform.hpp>
 #include <memory>
 #include <map>
-#include "wayfire/core.hpp"
+
+#include "wayfire/workspace-set.hpp" // IWYU pragma: keep
 #include "wayfire/geometry.hpp"
-#include "wayfire/opengl.hpp"
-#include "wayfire/region.hpp"
-#include "wayfire/scene-render.hpp"
-#include "wayfire/scene.hpp"
 #include "wayfire/signal-provider.hpp"
 #include "wayfire/output.hpp"
 
